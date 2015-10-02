@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="css/styles.css" rel="stylesheet" type="text/css">
+        <title>Shoes</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Stores and Brands</h1>
+                <h3>They're what make Muricah great</h3>
+            </div>
+
+            <div class="col-md-6 box">
+                <h2>Stores:</h2>
+                {% if stores is not empty %}
+                    <ul>
+                        {% for store in stores %}
+                            <li>
+                                <a href="/store/{{ store.getId }}">{{ store.getName }}</a> |
+                                <form action="/delete_store/{{ store.getId }}" method="post">
+                                    <button type="submit" class="btn btn-xs btn-danger">Demolish</button>
+                                </form>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <h4>There ain't no stores yet in this Muricah</h4>
+                {% endif %}
+                <form action="/add_store" method="post">
+                    <div class="form-group">
+                        <label for="name">Add Store:</label>
+                        <input id="name" name="name" placeholder="name">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Just do it!</button>
+                </form>
+            </div>
+
+            <div class="col-md-6 box">
+                <h2>Brands:</h2>
+                {% if brands is not empty %}
+                    <ul>
+                        {% for brand in brands %}
+                            <li><a href="/brand/{{ brand.getId }}">{{ brand.getName }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <h4>There ain't no brands yet in this Muricah</h4>
+                {% endif %}
+                <form action="/add_brand" method="post">
+                    <div class="form-group">
+                        <label for="name">Add Brand:</label>
+                        <input id="name" name="name" placeholder="name">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Just do it!</button>
+                </form>
+            </div>
+
+        </div>
+    </body>
+</html>

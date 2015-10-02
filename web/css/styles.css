@@ -1,0 +1,17 @@
+body {
+    /*background-image: url("/../images/collection.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;*/
+}
+
+.box {
+    border-style: solid;
+    background-color: hsla(0, 100%, 100%, 0.85);
+    margin: 10px 0px 10px 0px;
+    padding: 10px;
+}
+
+.inline {
+    display: inline;
+    /*vertical-align: middle;*/
+}

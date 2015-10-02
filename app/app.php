@@ -44,6 +44,18 @@
         return $app['twig']->render('brand.html.twig', array('brand' => $brand, 'brand_stores' => $brand->getStores()));
     });
 
+    $app->get("/stores/{id}/edit", function($id) use ($app) {
+        $store = Store::find($id);
+        return $app['twig']->render('store_edit.html.twig', array('store' => $store));
+    });
+
+    $app->post("/stores/{id}", function($id) use ($app) {
+        $store = Store::find($id);
+        $new_name = $_POST['name'];
+        $store->update($new_name);
+        return $app['twig']->render('store.html.twig', array('store' => $store, 'store_brands' => $store->getBrands()));
+    });
+
     $app->post("/delete_store/{id}", function($id) use ($app) {
         $store = Store::find($id);
         $store->delete();

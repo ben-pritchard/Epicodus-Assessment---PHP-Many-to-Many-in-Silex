@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="css/styles.css" rel="stylesheet" type="text/css">
+        <title>Shoes</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Update information for {{ store.getName }}</h1>
+            <form action="/stores/{{ store.getId }}" method="post">
+                <input name="_method" type="hidden" value="patch">
+
+                <div class="form-group">
+                    <label for="name">Rename the store:</label>
+                    <input id="name" name="name" type="text">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Rename</button>
+            </form>
+            <a href="/">Home</a>
+        </div>
+    </body>
+</html>

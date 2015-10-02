@@ -20,7 +20,11 @@
                         {% for store in stores %}
                             <li>
                                 <a href="/stores/{{ store.getId }}">{{ store.getName }}</a> |
+                                <form action="/stores/{{ store.getId }}/edit">
+                                    <button type="submit" class="btn btn-xs btn-warning">Edit</button>
+                                </form>
                                 <form action="/delete_store/{{ store.getId }}" method="post">
+                                    <input name="_method" type="hidden" value="delete">
                                     <button type="submit" class="btn btn-xs btn-danger">Demolish</button>
                                 </form>
                             </li>
@@ -39,6 +43,7 @@
                 </form>
 
                 <form action="delete_stores" method="post">
+                    <input name="_method" type="hidden" value="delete">
                     <button type="submit" class="btn btn-danger">Demolish all stores!</button>
                 </form>
 
@@ -52,6 +57,7 @@
                             <li>
                                 <a href="/brands/{{ brand.getId }}">{{ brand.getName }}</a> |
                                 <form action="/delete_brand/{{ brand.getId }}" method="post">
+                                    <input name="_method" type="hidden" value="delete">
                                     <button type="submit" class="btn btn-xs btn-danger">Abrandon</button>
                                 </form>
                             </li>
@@ -70,6 +76,7 @@
                 </form>
 
                 <form action="delete_brands" method="post">
+                    <input name="_method" type="hidden" value="delete">
                     <button type="submit" class="btn btn-danger">Abrandon all brands!</button>
                 </form>
             </div>

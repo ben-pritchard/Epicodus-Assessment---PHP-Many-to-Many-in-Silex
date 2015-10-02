@@ -62,6 +62,43 @@
             $this->assertEquals($test_Store, $result[0]);
         }
 
+        function testUpdate()
+        {
+            // Arrange
+            $name = "Get Your Kicks Co.";
+            $test_Store = new Store($name);
+            $test_Store->save();
+
+            $new_name = "Get Your Kicks Yo";
+
+            // Act
+            $test_Store->update($new_name);
+            $result = $test_Store->getName();
+
+            // Assert
+            $this->assertEquals($new_name, $result);
+
+        }
+
+        function testDelete()
+        {
+            // Arrange
+            $name = "Get Your Kicks Co.";
+            $test_Store = new Store($name);
+            $test_Store->save();
+            $name2 = "I Wanna Run Fast Co.";
+            $test_Store2 = new Store($name2);
+            $test_Store2->save();
+
+            // Act
+            $test_Store->delete();
+            $result = Store::getAll();
+
+            // Assert
+            $this->assertEquals([$test_Store2], $result);
+
+        }
+
         function testGetAll()
         {
             // Arrange

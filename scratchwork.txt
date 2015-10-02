@@ -1,0 +1,3 @@
+Questions:
+
+In SQL statements that use $this, why do we use $this->getId() instead of $this->id ?

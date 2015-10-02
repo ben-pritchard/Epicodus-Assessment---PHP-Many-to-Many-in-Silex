@@ -72,8 +72,8 @@
             $new_name = "Gibberish Producing Brooks";
 
             // Act
-            $test_Store->update($new_name);
-            $result = $test_Store->getName();
+            $test_Brand->update($new_name);
+            $result = $test_Brand->getName();
 
             // Assert
             $this->assertEquals($new_name, $result);
@@ -98,6 +98,25 @@
             $this->assertEquals([$test_Brand2], $result);
         }
 
+        function testDeleteJoins()
+        {
+            // Arrange
+            $name = "Get Your Kicks Co.";
+            $test_Store = new Store($name);
+            $test_Store->save();
+
+            $name = "Babbling Brooks";
+            $test_Brand = new Brand($name);
+            $test_Brand->save();
+
+            // Act
+            $test_Brand->addStore($test_Store);
+            $test_Brand->delete();
+            $result = $test_Store->getBrands();
+
+            // Assert
+            $this->assertEquals([], $result);
+        }
 
         function testAddStore()
         {

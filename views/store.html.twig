@@ -6,7 +6,9 @@
     </head>
     <body>
         <div class="container">
+
             <h1>{{ store.getName }}</h1>
+
             {% if store_brands is not empty %}
                 <h3>Here are the brands that {{ store.getName }} carries:</h3>
                 <ul>
@@ -17,11 +19,18 @@
             {% else %}
                 <h3>Ain't no brands carried at this store.</h3>
             {% endif %}
+
+            <h4>Add a brand to this store:</h4>
+
             <form action="/add_brands" method="post">
                 <input id="store_id" name="store_id" value="{{ store.getId }}" type="hidden">
                 <div class="form-group">
-                    <label for="name">Add another brand this store carries:</label>
-                    <input id="name" name="name" placeholder="name">
+                    <label for="brand_id">Select brand:</label>
+                    <select id="brand_id" name="brand_id" type="text">
+                        {% for brand in all_brands %}
+                            <option value="{{ brand.getId }}">{{ brand.getName }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-xs btn-primary">Add</button>
             </form>

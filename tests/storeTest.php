@@ -98,6 +98,26 @@
             $this->assertEquals([$test_Store2], $result);
         }
 
+        function testDeleteJoins()
+        {
+            // Arrange
+            $name = "Get Your Kicks Co.";
+            $test_Store = new Store($name);
+            $test_Store->save();
+
+            $name = "Babbling Brooks";
+            $test_Brand = new Brand($name);
+            $test_Brand->save();
+
+            // Act
+            $test_Store->addBrand($test_Brand);
+            $test_Store->delete();
+            $result = $test_Brand->getStores();
+
+            // Assert
+            $this->assertEquals([], $result);
+        }
+
         function testAddBrand()
         {
             // Arrange

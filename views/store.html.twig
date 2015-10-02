@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="css/styles.css" rel="stylesheet" type="text/css">
+        <title>Shoes</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>{{ store.getName }}</h1>
+            {% if store_brands is not empty %}
+                <h3>Here are brands that {{ store.getName }} carries:</h3>
+                <ul>
+                    {% for brand in store_brands %}
+                        <li>{{ brand.getName }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <h3>Ain't no brands carried at this store.</h3>
+            {% endif %}
+            <form action="/add_brands" method="post">
+                <input id="store_id" name="store_id" value="{{ store.getId }}" type="hidden">
+                <div class="form-group">
+                    <label for="name">Add another brand this store carries:</label>
+                    <input id="name" name="name" placeholder="name">
+                </div>
+                <button type="submit" class="btn btn-xs btn-primary">Add</button>
+            </form>
+            <a href="/">Home</a>
+        </div>
+    </body>
+</html>

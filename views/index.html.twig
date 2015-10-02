@@ -19,7 +19,7 @@
                     <ul>
                         {% for store in stores %}
                             <li>
-                                <a href="/store/{{ store.getId }}">{{ store.getName }}</a> |
+                                <a href="/stores/{{ store.getId }}">{{ store.getName }}</a> |
                                 <form action="/delete_store/{{ store.getId }}" method="post">
                                     <button type="submit" class="btn btn-xs btn-danger">Demolish</button>
                                 </form>
@@ -29,6 +29,7 @@
                 {% else %}
                     <h4>There ain't no stores yet in this Muricah</h4>
                 {% endif %}
+
                 <form action="/add_store" method="post">
                     <div class="form-group">
                         <label for="name">Add Store:</label>
@@ -36,6 +37,11 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Just do it!</button>
                 </form>
+
+                <form action="delete_stores" method="post">
+                    <button type="submit" class="btn btn-danger">Demolish all stores!</button>
+                </form>
+
             </div>
 
             <div class="col-md-6 box">
@@ -43,18 +49,23 @@
                 {% if brands is not empty %}
                     <ul>
                         {% for brand in brands %}
-                            <li><a href="/brand/{{ brand.getId }}">{{ brand.getName }}</a></li>
+                            <li><a href="/brands/{{ brand.getId }}">{{ brand.getName }}</a></li>
                         {% endfor %}
                     </ul>
                 {% else %}
                     <h4>There ain't no brands yet in this Muricah</h4>
                 {% endif %}
+
                 <form action="/add_brand" method="post">
                     <div class="form-group">
                         <label for="name">Add Brand:</label>
                         <input id="name" name="name" placeholder="name">
                     </div>
                     <button type="submit" class="btn btn-primary">Just do it!</button>
+                </form>
+
+                <form action="delete_brands" method="post">
+                    <button type="submit" class="btn btn-danger">Abandon all brands!</button>
                 </form>
             </div>
 

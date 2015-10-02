@@ -62,6 +62,43 @@
             $this->assertEquals([$test_Brand], $result);
         }
 
+        function testUpdate()
+        {
+            // Arrange
+            $brand_name = "Babbling Brooks";
+            $test_Brand = new Brand($brand_name);
+            $test_Brand->save();
+
+            $new_name = "Gibberish Producing Brooks";
+
+            // Act
+            $test_Store->update($new_name);
+            $result = $test_Store->getName();
+
+            // Assert
+            $this->assertEquals($new_name, $result);
+
+        }
+
+        function testDelete()
+        {
+            // Arrange
+            $name = "Babbling Brooks";
+            $test_Brand = new Brand($name);
+            $test_Brand->save();
+            $name2 = "Old Balance";
+            $test_Brand2 = new Brand($name2);
+            $test_Brand2->save();
+
+            // Act
+            $test_Brand->delete();
+            $result = Brand::getAll();
+
+            // Assert
+            $this->assertEquals([$test_Brand2], $result);
+        }
+
+
         function testAddStore()
         {
             // Arrange

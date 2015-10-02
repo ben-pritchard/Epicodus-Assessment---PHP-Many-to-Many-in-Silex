@@ -96,7 +96,6 @@
 
             // Assert
             $this->assertEquals([$test_Store2], $result);
-
         }
 
         function testAddBrand()

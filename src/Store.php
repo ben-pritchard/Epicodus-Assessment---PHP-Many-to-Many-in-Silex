@@ -47,6 +47,24 @@
             $GLOBALS['DB']->exec("DELETE FROM stores WHERE id = {$this->getId()};");
         }
 
+        function addBrand($brand)
+        {
+            $GLOBALS['DB']->exec("INSERT INTO brands_stores (brand_id, store_id) VALUES ({$brand->getId()}, {$this->getId()});");
+        }
+
+        function getBrands()
+        {
+            $query = $GLOBALS['DB']->query("SELECT brand_id FROM brands_stores WHERE store_id = {$this->getId()};");
+            $db_brand_ids = $query->fetchAll(PDO::FETCH_ASSOC);
+
+            $store_brands = array();
+            foreach ($db_brand_ids as $db_brand_id) {
+                $brand = Brand::find($db_brand_id['brand_id']);
+                array_push($store_brands, $brand);
+            }
+            return $store_brands;
+        }
+
         static function getAll()
         {
             $stores = array();

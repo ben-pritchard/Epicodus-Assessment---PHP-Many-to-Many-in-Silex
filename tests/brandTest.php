@@ -59,7 +59,7 @@
             $result = Brand::getAll();
 
             // Assert
-            $this->assertEquals($test_Brand, $result[0]);
+            $this->assertEquals([$test_Brand], $result);
         }
 
         function testGetAll()

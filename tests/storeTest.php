@@ -99,6 +99,50 @@
 
         }
 
+        function testAddBrand()
+        {
+            // Arrange
+            $brand_name = "Babbling Brooks";
+            $test_Brand = new Brand($brand_name);
+            $test_Brand->save();
+
+            $store_name = "I Wanna Run Fast Co.";
+            $test_Store = new Store($store_name);
+            $test_Store->save();
+
+            // Act
+            $test_Store->addBrand($test_Brand);
+            $result = $test_Store->getBrands();
+
+            // Assert
+            $this->assertEquals([$test_Brand], $result);
+        }
+
+        function testGetBrands()
+        {
+            // Arrange
+            $brand_name = "Babbling Brooks";
+            $test_Brand = new Brand($brand_name);
+            $test_Brand->save();
+
+            $brand_name2 = "Old Balance";
+            $test_Brand2 = new Brand($brand_name2);
+            $test_Brand2->save();
+
+
+            $store_name = "I Wanna Run Fast Co.";
+            $test_Store = new Store($store_name);
+            $test_Store->save();
+
+            // Act
+            $test_Store->addBrand($test_Brand);
+            $test_Store->addBrand($test_Brand2);
+            $result = $test_Store->getBrands();
+
+            // Assert
+            $this->assertEquals([$test_Brand, $test_Brand2], $result);
+        }
+
         function testGetAll()
         {
             // Arrange
@@ -150,50 +194,6 @@
             // Assert
             $this->assertEquals($test_Store2, $result);
 
-        }
-
-        function testAddBrand()
-        {
-            // Arrange
-            $brand_name = "Babbling Brooks";
-            $test_Brand = new Brand($brand_name);
-            $test_Brand->save();
-
-            $store_name = "I Wanna Run Fast Co.";
-            $test_Store = new Store($store_name);
-            $test_Store->save();
-
-            // Act
-            $test_Store->addBrand($test_Brand);
-            $result = $test_Store->getBrands();
-
-            // Assert
-            $this->assertEquals([$test_Brand], $result);
-        }
-
-        function testGetBrands()
-        {
-            // Arrange
-            $brand_name = "Babbling Brooks";
-            $test_Brand = new Brand($brand_name);
-            $test_Brand->save();
-
-            $brand_name2 = "Old Balance";
-            $test_Brand2 = new Brand($brand_name2);
-            $test_Brand2->save();
-
-
-            $store_name = "I Wanna Run Fast Co.";
-            $test_Store = new Store($store_name);
-            $test_Store->save();
-
-            // Act
-            $test_Store->addBrand($test_Brand);
-            $test_Store->addBrand($test_Brand2);
-            $result = $test_Store->getBrands();
-
-            // Assert
-            $this->assertEquals([$test_Brand, $test_Brand2], $result);
         }
     }
 

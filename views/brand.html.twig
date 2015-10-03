@@ -19,7 +19,7 @@
             {% else %}
                 <h3>Ain't no stores that carry this brand.</h3>
             {% endif %}
-
+            <hr>
             <h4>Add a store that carries this brand:</h4>
 
             <form action="/add_stores" method="post">
@@ -32,7 +32,7 @@
                         {% endfor %}
                     </select>
                 </div>
-                <button type="submit" class="btn btn-xs btn-primary">Add</button>
+                <button type="submit" class="btn btn-success">Add</button>
             </form>
             <a href="/">Home</a>
         </div>

@@ -1,7 +1,8 @@
 body {
-    /*background-image: url("/../images/collection.jpg");
+    background-image: url("/../images/shoes.jpg");
     background-repeat: no-repeat;
-    background-size: cover;*/
+    background-size: cover;
+    background-color: black;
 }
 
 .box {
@@ -14,4 +15,10 @@ body {
 .inline {
     display: inline;
     /*vertical-align: middle;*/
+}
+
+.jumbotron {
+    background-image: url("/../images/muricah.jpg");
+    background-size: cover;
+    color: white;
 }

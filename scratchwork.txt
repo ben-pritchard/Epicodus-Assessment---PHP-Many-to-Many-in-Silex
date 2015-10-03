@@ -1,3 +1,4 @@
 Questions:
 
+How do I get my styles.css "inline" block to cooperate?
 In SQL statements that use $this, why do we use $this->getId() instead of $this->id ?

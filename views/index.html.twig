@@ -19,14 +19,16 @@
                     <ul>
                         {% for store in stores %}
                             <li>
-                                <a href="/stores/{{ store.getId }}">{{ store.getName }}</a> |
-                                <form action="/stores/{{ store.getId }}/edit">
-                                    <button type="submit" class="btn btn-xs btn-warning">Edit</button>
-                                </form>
-                                <form action="/delete_store/{{ store.getId }}" method="post">
-                                    <input name="_method" type="hidden" value="delete">
-                                    <button type="submit" class="btn btn-xs btn-danger">Demolish</button>
-                                </form>
+                                <div class="inline">
+                                    <a href="/stores/{{ store.getId }}">{{ store.getName }}</a>
+                                    <form action="/stores/{{ store.getId }}/edit">
+                                        <button type="submit" class="btn btn-xs btn-warning">Edit</button>
+                                    </form>
+                                    <form action="/delete_store/{{ store.getId }}" method="post">
+                                        <input name="_method" type="hidden" value="delete">
+                                        <button type="submit" class="btn btn-xs btn-danger">Demolish</button>
+                                    </form>
+                                </div>
                             </li>
                         {% endfor %}
                     </ul>
@@ -39,7 +41,7 @@
                         <label for="name">Add Store:</label>
                         <input id="name" name="name" placeholder="name">
                     </div>
-                    <button type="submit" class="btn btn-primary">Just do it!</button>
+                    <button type="submit" class="btn btn-success">Just do it!</button>
                 </form>
 
                 <form action="delete_stores" method="post">
@@ -55,11 +57,13 @@
                     <ul>
                         {% for brand in brands %}
                             <li>
-                                <a href="/brands/{{ brand.getId }}">{{ brand.getName }}</a> |
-                                <form action="/delete_brand/{{ brand.getId }}" method="post">
-                                    <input name="_method" type="hidden" value="delete">
-                                    <button type="submit" class="btn btn-xs btn-danger">Abrandon</button>
-                                </form>
+                                <div class="inline">                                    
+                                    <a href="/brands/{{ brand.getId }}">{{ brand.getName }}</a>
+                                    <form action="/delete_brand/{{ brand.getId }}" method="post">
+                                        <input name="_method" type="hidden" value="delete">
+                                        <button type="submit" class="btn btn-xs btn-danger">Abrandon</button>
+                                    </form>
+                                </div>
                             </li>
                         {% endfor %}
                     </ul>
@@ -72,7 +76,7 @@
                         <label for="name">Add Brand:</label>
                         <input id="name" name="name" placeholder="name">
                     </div>
-                    <button type="submit" class="btn btn-primary">Just do it!</button>
+                    <button type="submit" class="btn btn-success">Just do it!</button>
                 </form>
 
                 <form action="delete_brands" method="post">
